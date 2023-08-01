@@ -26,6 +26,17 @@ async function generateNewShortURL(req, res) {
 
 }
 
+
+async function handleAnalytics(req, res) {
+    const shortId = req.params.id
+
+    const data = await URLModel.findOne({ shortId })
+
+    res.status(200).send({ totalClicks: data.visitHistory.length, analytics: data.visitHistory })
+}
+
+
 module.exports = {
-    generateNewShortURL
+    generateNewShortURL,
+    handleAnalytics
 }

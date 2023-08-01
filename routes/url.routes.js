@@ -1,6 +1,6 @@
 const express = require('express');
 const { URLModel } = require('../models/url.model')
-const { generateNewShortURL } = require('../controllers/url.controller')
+const { generateNewShortURL, handleAnalytics } = require('../controllers/url.controller')
 
 const urlRouter = express.Router();
 
@@ -18,6 +18,9 @@ urlRouter.get('/:id', async (req, res) => {
     res.redirect(data.redirectURL)
 
 })
+
+
+urlRouter.get('/analytics/:id', handleAnalytics)
 
 
 module.exports = {
