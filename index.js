@@ -13,7 +13,7 @@ app.get('/', (req, res)=>{
     res.status(200).send("Basic API endpoint");
 })
 
-app.use("/url", urlRouter)
+app.use("/", urlRouter)
 
 
 app.listen(process.env.PORT, async () => {
